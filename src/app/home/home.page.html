@@ -1,20 +1,42 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Lista de Goleadores
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label>Jugador</ion-label>
+    <ion-input [(ngModel)]="golEditando.jugador"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Numero de Goles</ion-label>
+    <ion-input [(ngModel)]="golEditando.numGoles"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Partidos</ion-label>
+    <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
+  </ion-item>
+  <ion-button (click)="clickBotonInsertar()">Añadir Jugador</ion-button>
+  <ion-button (click)="clickBotonBorrar()">Borrar Registro</ion-button>
+  <ion-button (click)="clickBotonModificar()">Modificar Registro</ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <h1>LISTA DE TAREAS</h1>
+  <ion-list>
+    <ion-item *ngFor="let documentGol of arrayColeccionGoles" (click)="selecGol(documentGol.id, documentGol.gol)">
+      <ion-grid>
+        <ion-row>
+          <h2>{{ documentGol.gol.jugador }}</h2>
+        </ion-row>
+        <ion-row>
+          <p>{{ documentGol.gol.numGoles }}</p>
+        </ion-row>
+        <ion-row>
+          <p>{{ documentGol.gol.partidos }}</p>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
