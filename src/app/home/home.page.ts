@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Gol} from '../gol';
 import { FirestoreService } from '../firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomePage {
 }];
 idGolSelec: string = "";
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(private firestoreService: FirestoreService, private router: Router) {
     this.obtenerListaGoles();
   }
 
@@ -44,6 +45,7 @@ idGolSelec: string = "";
   selecGol(idGol:string, golSelec:Gol){
     this.golEditando = golSelec;
     this.idGolSelec = idGol;
+    this.router.navigate(['detalle', this.idGolSelec])  ;
   }
 
 
