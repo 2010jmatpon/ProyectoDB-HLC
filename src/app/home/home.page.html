@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Lista de Goleadores
-    </ion-title>
+    <ion-title> Lista de Goleadores </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,7 +23,10 @@
 
   <h1>LISTA DE TAREAS</h1>
   <ion-list>
-    <ion-item *ngFor="let documentGol of arrayColeccionGoles" (click)="selecGol(documentGol.id, documentGol.gol)">
+    <ion-item
+      *ngFor="let documentGol of arrayColeccionGoles"
+      (click)="selecGol(documentGol.id, documentGol.gol)"
+    >
       <ion-grid>
         <ion-row>
           <h2>{{ documentGol.gol.jugador }}</h2>
@@ -38,5 +39,10 @@
         </ion-row>
       </ion-grid>
     </ion-item>
+    <ion-fab>
+      <ion-fab-button slot="fixed" vertical="bottom" horizontal="end">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-list>
 </ion-content>
