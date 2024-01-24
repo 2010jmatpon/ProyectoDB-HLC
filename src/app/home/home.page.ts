@@ -13,9 +13,10 @@ export class HomePage {
   golEditando = {} as Gol;
   arrayColeccionGoles: any = [{
     id: "",
-    gol: {} as Gol
+    gol: {} as Gol,
 }];
 idGolSelec: string = "";
+    formularioAnadir= false;
 
   constructor(private firestoreService: FirestoreService, private router: Router) {
     this.obtenerListaGoles();
@@ -25,6 +26,7 @@ idGolSelec: string = "";
     this.firestoreService.insertar("goles", this.golEditando).then(() => {
     console.log('Gol Marcado!');
     this.golEditando= {} as Gol;
+    this.formularioAnadir = false;
     }, (error) => {
       console.error(error);
     });

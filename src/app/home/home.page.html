@@ -5,23 +5,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-label>Jugador</ion-label>
-    <ion-input [(ngModel)]="golEditando.jugador"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Numero de Goles</ion-label>
-    <ion-input [(ngModel)]="golEditando.numGoles"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Partidos</ion-label>
-    <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
-  </ion-item>
-  <ion-button (click)="clickBotonInsertar()">Añadir Jugador</ion-button>
-  <ion-button (click)="clickBotonBorrar()">Borrar Registro</ion-button>
-  <ion-button (click)="clickBotonModificar()">Modificar Registro</ion-button>
-
-  <h1>LISTA DE TAREAS</h1>
+  <div *ngIf="formularioAnadir">
+    <ion-item>
+      <ion-label>Jugador</ion-label>
+      <ion-input 
+      [(ngModel)]="golEditando.jugador"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Numero de Goles</ion-label>
+      <ion-input [(ngModel)]="golEditando.numGoles"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Partidos</ion-label>
+      <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
+    </ion-item>
+    <ion-button (click)="clickBotonInsertar()" color="success">Añadir Jugador</ion-button>
+  </div>
+  <h1>GOLES</h1>
   <ion-list>
     <ion-item
       *ngFor="let documentGol of arrayColeccionGoles"
@@ -39,10 +40,10 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-    <ion-fab>
-      <ion-fab-button slot="fixed" vertical="bottom" horizontal="end">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
   </ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" >
+    <ion-fab-button (click)="formularioAnadir = !formularioAnadir" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
