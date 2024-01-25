@@ -62,7 +62,7 @@ idGolSelec: string = "";
   }
 
   clickBotonModificar() {
-    this.firestoreService.modificar("tareas", this.idGolSelec, this.golEditando).then(() => {
+    this.firestoreService.modificar("goles", this.idGolSelec, this.golEditando).then(() => {
       console.log('Registro editado');
     }, (error) => {
       console.error(error);

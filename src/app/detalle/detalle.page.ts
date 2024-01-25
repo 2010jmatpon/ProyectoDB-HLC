@@ -38,7 +38,7 @@ export class DetallePage implements OnInit {
             this.document.id = resultado.payload.id;
             this.document.goles = resultado.payload.data();
             //Como ejemplo, mostrar el título de la tarea en consola
-            console.log(this.document.data.jugador);
+            console.log(this.document.goles.jugador);
           } else {
             //No se ha encontrado un document con ese ID. Vaciar los datos que hubiera
             this.document.goles = {} as Gol;
@@ -86,7 +86,7 @@ idGolSelec: string = "";
   }
 
   clickBotonModificar() {
-    this.firestoreService.modificar("tareas", this.idGolSelec, this.golEditando).then(() => {
+    this.firestoreService.modificar("goles", this.idGolSelec, this.golEditando).then(() => {
       console.log('Registro editado');
     }, (error) => {
       console.error(error);
