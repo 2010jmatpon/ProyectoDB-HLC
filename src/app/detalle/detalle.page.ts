@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Gol } from '../gol';
 import { FirestoreService } from '../firestore.service';
 
@@ -16,9 +16,8 @@ export class DetallePage implements OnInit {
     id: '',
     goles: {} as Gol,
   };
-  router: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService) {
+  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
     this.obtenerListaGoles();
 
   }
@@ -76,13 +75,16 @@ idGolSelec: string = "";
 
 
   clickBotonBorrar(){
-    this.firestoreService.borrar("goles", this.idGolSelec).then(() => {
+    this.firestoreService.borrar("goles", this.idGolSelec);
+    // .then(() => {
     console.log('Gol Anulado!');
-    this.golEditando= {} as Gol;
-    this.idGolSelec = "";
-    }, (error) => {
-      console.error(error);
-    });
+    // this.document.data= {} as Gol;
+    // this.idGolSelec = "";
+    this.router.navigate(['home'])  ;
+
+    // }, (error) => {
+    //   console.error(error);
+    // });
   }
 
   clickBotonModificar() {
@@ -91,5 +93,18 @@ idGolSelec: string = "";
     }, (error) => {
       console.error(error);
     });
+  }
+
+
+  clickBotonInsertar(){
+    this.firestoreService.insertar("goles", this.golEditando).then(() => {
+    console.log('Gol Marcado!');
+    this.golEditando= {} as Gol;
+    this.router.navigate(['home'])  ;
+    }, (error) => {
+      console.error(error);
+    });
+    
+
   }
 }

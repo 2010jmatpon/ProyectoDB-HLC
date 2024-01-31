@@ -10,8 +10,7 @@
       <ion-title size="large">detalle</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item
->
+  <ion-item>
     <ion-label>Jugador</ion-label>
     <ion-input [(ngModel)]="golEditando.jugador"></ion-input>
   </ion-item>
@@ -23,10 +22,17 @@
     <ion-label>Partidos</ion-label>
     <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
   </ion-item>
-  <ion-button (click)="clickBotonBorrar()" color="danger">Borrar Registro</ion-button>
-  <ion-button (click)="clickBotonModificar()" color="warning">Modificar Registro</ion-button>
+  <ion-button (click)="clickBotonInsertar()" color="success"
+    >Añadir Jugador</ion-button
+  >
 
-  
+  <ion-button (click)="clickBotonBorrar()" color="danger"
+    >Borrar Registro</ion-button
+  >
+  <ion-button (click)="clickBotonModificar()" color="warning"
+    >Modificar Registro</ion-button
+  >
+
   <p>{{id}}</p>
 
   <p>Jugador: {{document.goles.jugador}}</p>

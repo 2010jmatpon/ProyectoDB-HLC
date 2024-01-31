@@ -49,6 +49,10 @@ idGolSelec: string = "";
     this.idGolSelec = idGol;
     this.router.navigate(['detalle', this.idGolSelec])  ;
   }
+  selecNuevo(){
+
+    this.router.navigate(['detalle', 'nuevo'])  ;
+  }
 
 
   clickBotonBorrar(){
