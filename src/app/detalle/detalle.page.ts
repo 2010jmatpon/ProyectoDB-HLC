@@ -75,7 +75,7 @@ idGolSelec: string = "";
 
 
   clickBotonBorrar(){
-    this.firestoreService.borrar("goles", this.idGolSelec);
+    this.firestoreService.borrar("goles", this.id);
     // .then(() => {
     console.log('Gol Anulado!');
     // this.document.data= {} as Gol;
@@ -88,8 +88,10 @@ idGolSelec: string = "";
   }
 
   clickBotonModificar() {
-    this.firestoreService.modificar("goles", this.idGolSelec, this.golEditando).then(() => {
+    this.firestoreService.modificar("goles", this.id, this.golEditando).then(() => {
       console.log('Registro editado');
+      this.router.navigate(['home'])  ;
+
     }, (error) => {
       console.error(error);
     });
