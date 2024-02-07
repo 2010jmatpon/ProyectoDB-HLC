@@ -11,6 +11,8 @@ import { FirestoreService } from '../firestore.service';
 })
 export class DetallePage implements OnInit {
   id: string = '';
+  nuevo: boolean = true;
+  existente: boolean = false;
 
   document: any = {
     id: '',
@@ -18,7 +20,7 @@ export class DetallePage implements OnInit {
   };
 
   constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
-    this.obtenerListaGoles();
+    // this.obtenerListaGoles();
 
   }
 
@@ -38,6 +40,8 @@ export class DetallePage implements OnInit {
             this.document.goles = resultado.payload.data();
             //Como ejemplo, mostrar el título de la tarea en consola
             console.log(this.document.goles.jugador);
+            this.nuevo = false;
+            this.existente = true
           } else {
             //No se ha encontrado un document con ese ID. Vaciar los datos que hubiera
             this.document.goles = {} as Gol;
@@ -48,30 +52,30 @@ export class DetallePage implements OnInit {
     }
   }
 
-  golEditando = {} as Gol;
-  arrayColeccionGoles: any = [{
-    id: "",
-    gol: {} as Gol
-}];
-idGolSelec: string = "";
+//   golEditando = {} as Gol;
+//   arrayColeccionGoles: any = [{
+//     id: "",
+//     gol: {} as Gol
+// }];
+// idGolSelec: string = "";
 
-  obtenerListaGoles(){
-    this.firestoreService.consultar("goles").subscribe((datosRecibidos) => {
-      this.arrayColeccionGoles = [];
-      datosRecibidos.forEach((datosGol) => {
-        this.arrayColeccionGoles.push({
-          id: datosGol.payload.doc.id,
-          gol: datosGol.payload.doc.data()
+  // obtenerListaGoles(){
+  //   this.firestoreService.consultar("goles").subscribe((datosRecibidos) => {
+  //     this.arrayColeccionGoles = [];
+  //     datosRecibidos.forEach((datosGol) => {
+  //       this.arrayColeccionGoles.push({
+  //         id: datosGol.payload.doc.id,
+  //         gol: datosGol.payload.doc.data()
 
-        })
-      });
-    });
-  }
-  selecGol(idGol:string, golSelec:Gol){
-    this.golEditando = golSelec;
-    this.idGolSelec = idGol;
-    this.router.navigate(['detalle', this.idGolSelec])  ;
-  }
+  //       })
+  //     });
+  //   });
+  // }
+  // selecGol(idGol:string, golSelec:Gol){
+  //   this.golEditando = golSelec;
+  //   this.idGolSelec = idGol;
+  //   this.router.navigate(['detalle', this.idGolSelec])  ;
+  // }
 
 
   clickBotonBorrar(){
@@ -88,7 +92,7 @@ idGolSelec: string = "";
   }
 
   clickBotonModificar() {
-    this.firestoreService.modificar("goles", this.id, this.golEditando).then(() => {
+    this.firestoreService.modificar("goles", this.id, this.document.goles).then(() => {
       console.log('Registro editado');
       this.router.navigate(['home'])  ;
 
@@ -99,9 +103,9 @@ idGolSelec: string = "";
 
 
   clickBotonInsertar(){
-    this.firestoreService.insertar("goles", this.golEditando).then(() => {
+    this.firestoreService.insertar("goles", this.document.goles).then(() => {
     console.log('Gol Marcado!');
-    this.golEditando= {} as Gol;
+    this.document.goles.jugador= {} as Gol;
     this.router.navigate(['home'])  ;
     }, (error) => {
       console.error(error);

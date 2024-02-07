@@ -12,28 +12,24 @@
   </ion-header>
   <ion-item>
     <ion-label>Jugador</ion-label>
-    <ion-input [(ngModel)]="golEditando.jugador"></ion-input>
+    <ion-input [(ngModel)]="document.goles.jugador"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Numero de Goles</ion-label>
-    <ion-input [(ngModel)]="golEditando.numGoles"></ion-input>
+    <ion-input [(ngModel)]="document.goles.numGoles"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Partidos</ion-label>
-    <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
+    <ion-input [(ngModel)]="document.goles.partidos"></ion-input>
   </ion-item>
-  <ion-button (click)="clickBotonInsertar()" color="success"
+  <ion-button *ngIf="nuevo"  (click)="clickBotonInsertar()" color="success"
     >Añadir Jugador</ion-button
   >
 
-  <ion-button (click)="clickBotonBorrar()" color="danger"
+  <ion-button *ngIf="existente" (click)="clickBotonBorrar()" color="danger"
     >Borrar Registro</ion-button
   >
-  <ion-button (click)="clickBotonModificar()" color="warning"
+  <ion-button *ngIf="existente" (click)="clickBotonModificar()" color="warning"
     >Modificar Registro</ion-button
   >
-
-  <p>{{id}}</p>
-
-  <p>Jugador: {{document.goles.jugador}}</p>
 </ion-content>
