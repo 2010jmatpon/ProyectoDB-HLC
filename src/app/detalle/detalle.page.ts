@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gol } from '../gol';
 import { FirestoreService } from '../firestore.service';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -19,8 +20,7 @@ export class DetallePage implements OnInit {
     goles: {} as Gol,
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
-    // this.obtenerListaGoles();
+  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router, private alertController: AlertController) {
 
   }
 
@@ -52,43 +52,38 @@ export class DetallePage implements OnInit {
     }
   }
 
-//   golEditando = {} as Gol;
-//   arrayColeccionGoles: any = [{
-//     id: "",
-//     gol: {} as Gol
-// }];
-// idGolSelec: string = "";
 
-  // obtenerListaGoles(){
-  //   this.firestoreService.consultar("goles").subscribe((datosRecibidos) => {
-  //     this.arrayColeccionGoles = [];
-  //     datosRecibidos.forEach((datosGol) => {
-  //       this.arrayColeccionGoles.push({
-  //         id: datosGol.payload.doc.id,
-  //         gol: datosGol.payload.doc.data()
+  async confirmarBorrado() {
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar este registro?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Borrado cancelado');
+          }
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Borrado confirmado');
+            this.clickBotonBorrar(); // Llama a la función de borrado cuando el usuario confirma
+          }
+        }
+      ]
+    });
 
-  //       })
-  //     });
-  //   });
-  // }
-  // selecGol(idGol:string, golSelec:Gol){
-  //   this.golEditando = golSelec;
-  //   this.idGolSelec = idGol;
-  //   this.router.navigate(['detalle', this.idGolSelec])  ;
-  // }
-
+    await alert.present();
+  }
 
   clickBotonBorrar(){
     this.firestoreService.borrar("goles", this.id);
-    // .then(() => {
+    
     console.log('Gol Anulado!');
-    // this.document.data= {} as Gol;
-    // this.idGolSelec = "";
+    
     this.router.navigate(['home'])  ;
-
-    // }, (error) => {
-    //   console.error(error);
-    // });
   }
 
   clickBotonModificar() {
@@ -112,5 +107,10 @@ export class DetallePage implements OnInit {
     });
     
 
+  }
+
+  volver(){
+
+    this.router.navigate(['home'])  ;
   }
 }

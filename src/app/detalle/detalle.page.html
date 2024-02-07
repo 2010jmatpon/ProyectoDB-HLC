@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detalle</ion-title>
+    <ion-title>GOL</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">detalle</ion-title>
+      <ion-title size="large">GOL</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-item>
@@ -26,10 +26,17 @@
     >Añadir Jugador</ion-button
   >
 
-  <ion-button *ngIf="existente" (click)="clickBotonBorrar()" color="danger"
+  <ion-button *ngIf="existente" (click)="confirmarBorrado()" color="danger"
     >Borrar Registro</ion-button
   >
   <ion-button *ngIf="existente" (click)="clickBotonModificar()" color="warning"
     >Modificar Registro</ion-button
   >
+
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start" >
+    <ion-fab-button (click)="volver()" color="dark">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
