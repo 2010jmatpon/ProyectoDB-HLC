@@ -22,19 +22,17 @@
     <ion-label>Partidos</ion-label>
     <ion-input [(ngModel)]="document.goles.partidos"></ion-input>
   </ion-item>
-  <ion-button *ngIf="nuevo"  (click)="clickBotonInsertar()" color="success"
-    >Añadir Jugador</ion-button
+  <ion-button *ngIf="nuevo" (click)="clickBotonInsertar()" color="success"
+    >Añadir <ion-icon name="add"></ion-icon></ion-button
   >
-
+  <ion-button  *ngIf="existente" (click)="clickBotonModificar()" color="warning"
+    >Modificar <ion-icon name="repeat"></ion-icon></ion-button
+  >
   <ion-button *ngIf="existente" (click)="confirmarBorrado()" color="danger"
-    >Borrar Registro</ion-button
-  >
-  <ion-button *ngIf="existente" (click)="clickBotonModificar()" color="warning"
-    >Modificar Registro</ion-button
+    >Borrar <ion-icon name="trash"></ion-icon></ion-button
   >
 
-
-  <ion-fab slot="fixed" vertical="bottom" horizontal="start" >
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
     <ion-fab-button (click)="volver()" color="dark">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
