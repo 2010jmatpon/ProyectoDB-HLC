@@ -22,11 +22,20 @@
     <ion-label>Partidos</ion-label>
     <ion-input [(ngModel)]="document.goles.partidos"></ion-input>
   </ion-item>
+
+  <img src="{{document.goles.imagenURL}}" alt="Imagen Futbolista" *ngIf="imagenSelec"/>
+  
   <ion-button *ngIf="nuevo" (click)="clickBotonInsertar()" color="success"
     >Añadir <ion-icon name="add"></ion-icon></ion-button
   >
-  <ion-button  *ngIf="existente" (click)="clickBotonModificar()" color="warning"
-    >Modificar <ion-icon name="repeat"></ion-icon></ion-button
+  <ion-button (click)="seleccionarImagen()" color="success" *ngIf="!imagenSelec"
+    >Seleccionar Imagen <ion-icon name="cloud-upload"></ion-icon></ion-button
+  >
+  <!-- <ion-button (click)="subirImagen()" color="success" *ngIf="imagenSelec"
+    >Subir Imagen <ion-icon name="cloud-upload"></ion-icon></ion-button
+  > -->
+  <ion-button  *ngIf="existente" (click)="clickBotonModificar();subirImagen()" color="warning"
+    >Guardar <ion-icon name="repeat"></ion-icon></ion-button
   >
   <ion-button *ngIf="existente" (click)="confirmarBorrado()" color="danger"
     >Borrar <ion-icon name="trash"></ion-icon></ion-button

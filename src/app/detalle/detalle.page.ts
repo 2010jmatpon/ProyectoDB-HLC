@@ -191,7 +191,7 @@ export class DetallePage implements OnInit {
         snapshot.ref.getDownloadURL().then((downloadURL) => {
           //EN LA VARIABLE downloadURL SE OBTIENE LA DIRECCIÓN DE LA IMAGEN
           console.log('downloadURL:' + downloadURL);
-          //this.document.data.imagenURL = downloadURL;
+          this.document.goles.imagenURL = downloadURL;
           //Mostrar el mensaje de finalización de la subida
           toast.present();
           //Ocultar mensaje de espera
