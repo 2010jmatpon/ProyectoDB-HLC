@@ -8,7 +8,7 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
-
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.page.html',
@@ -32,7 +32,8 @@ export class DetallePage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private imagePicker: ImagePicker
+    private imagePicker: ImagePicker,
+    // private socialSharing: SocialSharing
   ) {}
 
   ngOnInit() {
@@ -214,4 +215,19 @@ export class DetallePage implements OnInit {
       }
     );
   }
+
+  // share() {
+  //   navigator
+  //     .share({
+  //       title: 'Compartir',
+  //       text: 'Comparte con quien quieras',
+  //       url: 'http://www.myurl.com',
+  //     })
+  //     .then(function () {
+  //       console.log('Successful share');
+  //     })
+  //     .catch(function (error) {
+  //       console.log('Error sharing:', error);
+  //     });
+  // }
 }
