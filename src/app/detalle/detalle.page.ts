@@ -9,6 +9,7 @@ import {
 } from '@ionic/angular';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { Share } from '@capacitor/share';
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.page.html',
@@ -216,6 +217,11 @@ export class DetallePage implements OnInit {
     );
   }
 
+  async share(){
+    await Share.share({
+      text: this.document.goles.jugador + ' marcó ' + this.document.goles.numGoles + ' goles en el partido ' + this.document.goles.partidos,
+    });
+  }
   // share() {
   //   navigator
   //     .share({
@@ -230,4 +236,5 @@ export class DetallePage implements OnInit {
   //       console.log('Error sharing:', error);
   //     });
   // }
+  
 }
