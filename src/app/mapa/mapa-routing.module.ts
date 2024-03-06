@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AcercaDePage } from './acerca-de.page';
+import { MapaPage } from './mapa.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AcercaDePage
+    component: MapaPage
+  },
+  {
+    path: 'acerca-de',
+    redirectTo: '/acerca-de'
   },
   {
     path: 'home',
     redirectTo: '/home'
-  },
-  {
-    path: 'mapa',
-    redirectTo: '/mapa'
   }
 ];
 
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AcercaDePageRoutingModule {}
+export class MapaPageRoutingModule {}

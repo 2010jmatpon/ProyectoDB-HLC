@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>acerca-de</ion-title>
+    <ion-title>Acerca De</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +10,51 @@
       <ion-title size="large">acerca-de</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-grid>
+    <ion-row>
+      <h1>Información Sobre la Aplicación</h1>
+      <p>
+        Bienvenido a nuestro Registro de Goles, la aplicación perfecta para los
+        amantes del fútbol que desean llevar un seguimiento detallado de los
+        goles marcados en sus partidos favoritos. Nuestra aplicación está
+        diseñada para proporcionar una experiencia fácil de usar y completa para
+        todos los aficionados, desde los jugadores hasta los entrenadores y los
+        aficionados más puristas de las estadísticas.
+      </p>
+    </ion-row>
+    <ion-row>
+      <h1>Sobre el Autor</h1>
+      <p>
+        Hola soy Juan María Mateos, un apasionado aficionado al fútbol, que
+        actualmente cursa 2º curso de Desarrollo de Aplicaciones Web, con
+        ambición de seguir formandome y con mucha ilusión por conseguir el éxito
+        de mi página web.
+      </p>
+    </ion-row>
+  </ion-grid>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="llamar()" color="success">
+      <ion-icon name="call"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="triangle"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="acerca-de">
+        <ion-icon name="ellipse"></ion-icon>
+        <ion-label>Acerca De</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="mapa">
+        <ion-icon name="square"></ion-icon>
+        <ion-label>Mapa</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>
