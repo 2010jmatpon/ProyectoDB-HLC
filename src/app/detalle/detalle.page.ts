@@ -153,6 +153,7 @@ export class DetallePage implements OnInit {
                     'Imagen que se ha seleccionado (en Base64):' +
                       this.imagenSelec
                   );
+                  this.subirImagen();
                 }
               },
               (err) => {

@@ -8,9 +8,7 @@
   <div *ngIf="formularioAnadir">
     <ion-item>
       <ion-label>Jugador</ion-label>
-      <ion-input 
-      [(ngModel)]="golEditando.jugador"
-      ></ion-input>
+      <ion-input [(ngModel)]="golEditando.jugador"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Numero de Goles</ion-label>
@@ -20,7 +18,9 @@
       <ion-label>Partidos</ion-label>
       <ion-input [(ngModel)]="golEditando.partidos"></ion-input>
     </ion-item>
-    <ion-button (click)="clickBotonInsertar()" color="success">Añadir Jugador</ion-button>
+    <ion-button (click)="clickBotonInsertar()" color="success"
+      >Añadir Jugador</ion-button
+    >
   </div>
   <h1>GOLES</h1>
   <ion-list>
@@ -41,29 +41,27 @@
       </ion-grid>
     </ion-item>
   </ion-list>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" >
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="selecNuevo()" color="success">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  
 </ion-content>
 <ion-toolbar>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="home">
-        <ion-icon name="triangle"></ion-icon>
-        <ion-label>Inicio</ion-label>
+        <ion-icon name="home-outline"></ion-icon>
+         <ion-label>Inicio</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="acerca-de">
-        <ion-icon name="ellipse"></ion-icon>
+        <ion-icon name="information-circle-outline"></ion-icon>
         <ion-label>Acerca De</ion-label>
       </ion-tab-button>
-   
+
       <ion-tab-button tab="mapa">
-        <ion-icon name="square"></ion-icon>
+        <ion-icon name="map-outline"></ion-icon> 
         <ion-label>Mapa</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

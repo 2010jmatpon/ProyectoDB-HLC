@@ -26,7 +26,7 @@
   <img
     src="{{document.goles.imagenURL}}"
     alt="Imagen Futbolista"
-    *ngIf="imagenSelec"
+    *ngIf="imagenSelec || document.goles.imagenURL"
   />
 
   <ion-button *ngIf="nuevo" (click)="clickBotonInsertar()" color="success"
@@ -34,9 +34,6 @@
   ></ion-button>
   <ion-button (click)="seleccionarImagen()" color="success" *ngIf="!imagenSelec"
     >Seleccionar Imagen <ion-icon name="cloud-upload"></ion-icon
-  ></ion-button>
-  <ion-button (click)="subirImagen()" color="success" *ngIf="imagenSelec"
-    >Subir Imagen <ion-icon name="cloud-upload"></ion-icon
   ></ion-button>
   <ion-button *ngIf="existente" (click)="clickBotonModificar()" color="warning"
     >Guardar <ion-icon name="repeat"></ion-icon
