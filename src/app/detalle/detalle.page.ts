@@ -210,6 +210,7 @@ export class DetallePage implements OnInit {
     });
     this.firestoreService.eliminarArchivoPorURL(fileURL).then(
       () => {
+        this.document.goles.imagenURL = '';
         toast.present();
       },
       (err) => {
@@ -217,25 +218,12 @@ export class DetallePage implements OnInit {
       }
     );
   }
+  
 
   async share(){
     await Share.share({
       text: this.document.goles.jugador + ' marcó ' + this.document.goles.numGoles + ' goles en el partido ' + this.document.goles.partidos,
     });
   }
-  // share() {
-  //   navigator
-  //     .share({
-  //       title: 'Compartir',
-  //       text: 'Comparte con quien quieras',
-  //       url: 'http://www.myurl.com',
-  //     })
-  //     .then(function () {
-  //       console.log('Successful share');
-  //     })
-  //     .catch(function (error) {
-  //       console.log('Error sharing:', error);
-  //     });
-  // }
   
 }
